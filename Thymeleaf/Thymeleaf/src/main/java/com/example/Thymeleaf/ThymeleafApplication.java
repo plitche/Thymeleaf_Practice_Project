@@ -1,13 +1,13 @@
-package Thymeleaf.practice;
+package com.example.Thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PracticeApplication {
+public class ThymeleafApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PracticeApplication.class, args);
+		SpringApplication.run(ThymeleafApplication.class, args);
 	}
 
 }
