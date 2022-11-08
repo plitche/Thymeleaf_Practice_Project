@@ -11,7 +11,6 @@ public class ProductService {
     private Integer seq = 0;
     private List<ProductDto> productDtoList;
 
-
     public ProductService() {
         this.productDtoList.add(new ProductDto(++seq, "java", 10000));
         this.productDtoList.add(new ProductDto(++seq, "spring", 20000));
@@ -29,5 +28,10 @@ public class ProductService {
                 .orElseThrow(() -> new Exception("bad product seq parameter ERROR"));
     }
 
+    public ProductDto addProduct(String productName, int price) throws Exception {
+        ProductDto productDto = new ProductDto(++seq, productName, price);
+        this.productDtoList.add(productDto);
+        return getProduct(productDto.getProductSeq());
+    }
 
 }
