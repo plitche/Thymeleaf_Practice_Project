@@ -16,6 +16,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String getMain(Model model) throws Exception {
+        model.addAttribute("msg", "Hello World");
         model.addAttribute("productList", productService.getProductList());
         return "main";
     }
