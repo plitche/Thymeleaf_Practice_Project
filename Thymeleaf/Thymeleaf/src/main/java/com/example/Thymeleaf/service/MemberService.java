@@ -5,13 +5,14 @@ import com.example.Thymeleaf.dto.MemberType;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MemberService {
 
     private Integer seq = 0;
-    private List<MemberDto> memberDtoList;
+    private List<MemberDto> memberDtoList = new ArrayList<>();
 
     public MemberService() {
         this.memberDtoList.add(new MemberDto("plitche", "abcd1234!", "yskwon", MemberType.ADMIN.getValue()));

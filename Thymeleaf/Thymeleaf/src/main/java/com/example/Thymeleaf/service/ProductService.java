@@ -3,13 +3,14 @@ package com.example.Thymeleaf.service;
 import com.example.Thymeleaf.dto.ProductDto;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductService {
 
     private Integer seq = 0;
-    private List<ProductDto> productDtoList;
+    private List<ProductDto> productDtoList = new ArrayList<>();
 
     public ProductService() {
         this.productDtoList.add(new ProductDto(++seq, "java", 10000));
