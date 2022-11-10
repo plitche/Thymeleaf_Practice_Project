@@ -16,5 +16,22 @@
   <input type="text" th:value="${message}" value="기본값">
 ```   
 
+- Model로 넘어온 값을 th:each를 사용
+- th:each의 두 번째 파라미터로 stat을 설정해서 반복의 상태를 확인. 두 번째 파라미터를 생략하는 경우 앞의 변수명 + Stat이 Default 값이 된다.
+    - index : 0부터 시작하는 값
+    - count : 1부터 시작하는 값
+    - current : 현재 객체 정보
+    - even : 짝수 번째 데이터 여부
+    - odd : 홀수 번째 데이터 여부
+    - first : 첫 번째 데이터 여부
+    - last : 마지막 데이터 여부
+
+```html
+  <tr th:each="product, stat : ${productList}">
+    <td th:text="${stat.index+1}"></td>
+    <td th:text="${product.productName}"></td>
+    <td th:text="${product.productPrice}"></td>
+  </tr>
+```
 
   
