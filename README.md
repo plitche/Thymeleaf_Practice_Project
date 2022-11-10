@@ -17,7 +17,7 @@
 ```   
 
 - Model로 넘어온 값을 th:each를 사용
-- th:each의 두 번째 파라미터로 stat을 설정해서 반복의 상태를 확인. 두 번째 파라미터를 생략하는 경우 앞의 변수명 + Stat이 Default 값이 된다.
+- th:each의 두 번째 파라미터로 stat을 설정해서 반복의 상태를 확인. 두 번째 파라미터를 생략하는 경우 앞의 변수명 + Stat이 Default 값
     - index : 0부터 시작하는 값
     - count : 1부터 시작하는 값
     - current : 현재 객체 정보
