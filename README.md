@@ -32,6 +32,29 @@
     <td th:text="${product.productName}"></td>
     <td th:text="${product.productPrice}"></td>
   </tr>
+```  
+
+- a태그를 작성할 때는 th:href="@{}" 을 이용하여 작성
+```html
+  <!-- 특정 url로 이동 -->
+  <a th:href="@{https://plitche.tistory.com}">블로그 이동</a>
+  <!-- 현재 서버 내에서 이동 -->
+  <a th:href="@{/product/list}">상품리스트 페이지</a>
+  <!-- 파라미터를 넘길 시 -->
+  <a th:href="@{/product/detail(id = ${product.seq})}">상품 상세 페이지</a>
+  <!-- 파라미터를 여러 개 넘길 시 -->
+  <a th:href="@{/product/detail(id = ${product.seq}, productName = ${product.name}})}">상품 상세 페이지</a>
+  <!-- PathVariable 사용 시 -->
+  <a th:href="@{/product/detail/{productSeq}(id = ${product.seq})}">상품 상세 페이지</a>
 ```
+
+
+
+
+
+
+
+
+
 
   
