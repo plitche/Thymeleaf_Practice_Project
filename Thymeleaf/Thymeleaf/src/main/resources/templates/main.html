@@ -4,12 +4,37 @@
     <meta charset="UTF-8">
     <title>product List</title>
 </head>
+<style>
+    body {position: absolute}
+    .outerWrap {position: relative; top: 200px; left: 50%;}
+    #productTable td, #productTable th {border: 1px solid black; padding: 18px;}
+    #productTable thead th {text-align: left}
+    #productTable td {width: 100px;}
+</style>
 <body>
 
-<h1 th:text="${msg}"></h1>
-
-
-<h1 th:text="${productList}"></h1>
+    <div class="outerWrap">
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>순번</th>
+                    <th>상품명</th>
+                    <th>가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product, stat : ${productList}">
+                    <td th:text="${stat.index+1}"></td>
+                    <td>
+                        <a th:text="${product.productName}"
+                           th:href="@{/product/detail/{productSeq}(productSeq = ${product.productSeq})}">
+                        </a>
+                    </td>
+                    <td th:text="${product.productPrice}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
