@@ -26,8 +26,12 @@ public class MainController {
     @RequestMapping("/product/detail/{productSeq}")
     @ResponseBody
     public ProductDto getProductDetail(@PathVariable int productSeq) throws Exception {
-        System.out.println("productSeq = " + productSeq);
         return productService.getProduct(productSeq);
+    }
+
+    @RequestMapping("/product/add")
+    public String addProductPage() {
+        return "/product/addProduct";
     }
 
 }
