@@ -49,7 +49,7 @@
 ```
 
 - th:onclick (location.href)  
-  - location.href 앞 뒤로 | 를 작성. |를 앞 뒤로 써주면 +연산자를 사용하지 않아도, 사용한 것과 같은 효과
+  > location.href 앞 뒤로 | 를 작성. |를 앞 뒤로 써주면 +연산자를 사용하지 않아도, 사용한 것과 같은 효과
 ```html
 <button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>
 <button th:onclick="|location.href='@{/product/add}'|">등록</button>
