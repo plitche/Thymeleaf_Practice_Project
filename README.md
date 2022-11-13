@@ -55,9 +55,42 @@
 <button th:onclick="|location.href='@{/product/add}'|">등록</button>
 ```  
 
+- form
+  - th:action
+    > form data를 보낼 url를 설정
+  - th:object
+    > form data를 담을 객체를 설정
+  - th:field
+    > 담는 객체의 필드을 동적으로 매핑 (사용시 객체의 필드로 id과 name이 자동생성)
 
 
-
+```html
+@GetMapping("/writeBbs")
+public String writeBbs(Model model, ProductDto productDto){
+    // 먼저 form태그를 사용할 페이지에 비어있는 객체를 전달해야함
+    model.addAttribute("productDto",productDto);
+    return "writeBbs";
+}
+```  
+  
+```html
+<form th:action="@{/add/product}"  th:object="${productDto}" method="post" >
+  <table class="table">
+      <tbody>
+      <tr>
+          <td>이름</td>
+          <td><input type="text" th:field="*{productName}"></td>
+      </tr>
+      <tr>
+          <td>가격</td>
+          <td><input type="text" th:field="*{productPrice}"></td>
+      </tr>
+      </tbody>
+      <button type="submit">등록</button>
+      // th:field에서는 받아온 객체의 필드변수명을 입력해야 form data를 보낼때 자동으로 매핑
+  </table>
+</form>
+```
 
 
 
