@@ -27,10 +27,15 @@ public class MainController {
         return productService.getProduct(productSeq);
     }
 
+    @RequestMapping("/product")
+    public String test(Model model, ProductDto productDto) {
+        return "test";
+    }
+
     @RequestMapping("/product/add/page")
     public String addProductPage(Model model, ProductDto productDto) {
         model.addAttribute("productDto", productDto);
-        return "/product/addProduct";
+        return "product/addProduct";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
@@ -44,4 +49,6 @@ public class MainController {
         model.addAttribute("addProduct", addProduct);
         return "redirect:/";
     }
+
+
 }
