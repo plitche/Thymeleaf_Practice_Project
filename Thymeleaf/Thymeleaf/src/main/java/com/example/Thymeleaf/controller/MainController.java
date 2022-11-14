@@ -6,9 +6,7 @@ import com.example.Thymeleaf.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,9 +27,21 @@ public class MainController {
         return productService.getProduct(productSeq);
     }
 
-    @RequestMapping("/product/add")
-    public String addProductPage() {
+    @RequestMapping("/product/add/page")
+    public String addProductPage(Model model, ProductDto productDto) {
+        model.addAttribute("productDto", productDto);
         return "/product/addProduct";
     }
 
+    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    public String addProduct(@RequestParam ProductDto productDto,
+                             Model model) throws Exception {
+        String name = productDto.getProductName();
+        int price = productDto.getProductPrice();
+        String desc = productDto.getDescription();
+
+        ProductDto addProduct = productService.addProduct(name, price, desc);
+        model.addAttribute("addProduct", addProduct);
+        return "redirect:/";
+    }
 }

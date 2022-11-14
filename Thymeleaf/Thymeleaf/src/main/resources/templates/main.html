@@ -13,9 +13,6 @@
     button {border: 2px solid red; border-radius: 20%; margin-right: 10px; background: red; padding: 5px; font-weight: bold; font-size: large; color: white;}
 </style>
 <script>
-    function getProductDetail(productSeq) {
-        alert(productSeq)
-    }
 
 </script>
 <body>
@@ -56,7 +53,7 @@
                 <tr>
                     <td colspan="4" style="text-align: right">
                         <!--<button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>-->
-                        <button th:onclick="|location.href='@{/product/add}'|">등록</button>
+                        <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>
                         <button>삭제</button>
                     </td>
                 </tr>

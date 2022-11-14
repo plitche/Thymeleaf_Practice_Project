@@ -15,13 +15,13 @@
 
     <div class="outerWrap">
         <h2>상품 등록 페이지</h2>
-        <form ction="">
+        <form th:action="@{/product/add}" th:object="${productDto}" method="post">
             <span>제목 : </span>
-            <input type="text" name="name" /><br/>
+            <input type="text" th:field="*{productName}" /><br/>
             <span>가격 : </span>
-            <input type="text" name="price" /><br/>
+            <input type="text" th:field="*{productPrice}" /><br/>
             <span>설명 : </span>
-            <textarea name="desc" ></textarea>
+            <textarea th:field="*{description}" ></textarea>
         </form>
     </div>
 
