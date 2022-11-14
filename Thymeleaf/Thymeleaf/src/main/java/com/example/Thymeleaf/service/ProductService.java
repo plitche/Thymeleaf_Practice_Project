@@ -13,10 +13,10 @@ public class ProductService {
     private List<ProductDto> productDtoList = new ArrayList<>();
 
     public ProductService() {
-        this.productDtoList.add(new ProductDto(++seq, "java", 10000));
-        this.productDtoList.add(new ProductDto(++seq, "spring", 20000));
-        this.productDtoList.add(new ProductDto(++seq, "node", 15000));
-        this.productDtoList.add(new ProductDto(++seq, "thymeleaf", 30000));
+        this.productDtoList.add(new ProductDto(++seq, "java", 10000, "자바 책 입니다."));
+        this.productDtoList.add(new ProductDto(++seq, "spring", 20000, "스프링 책 입니다."));
+        this.productDtoList.add(new ProductDto(++seq, "node", 15000, "노드 책 입니다."));
+        this.productDtoList.add(new ProductDto(++seq, "thymeleaf", 30000, "타임리프 책 입니다."));
     }
 
     public List<ProductDto> getProductList() {
@@ -29,8 +29,8 @@ public class ProductService {
                 .orElseThrow(() -> new Exception("bad product seq parameter ERROR"));
     }
 
-    public ProductDto addProduct(String productName, int price) throws Exception {
-        ProductDto productDto = new ProductDto(++seq, productName, price);
+    public ProductDto addProduct(String productName, int price, String desc) throws Exception {
+        ProductDto productDto = new ProductDto(++seq, productName, price, desc);
         this.productDtoList.add(productDto);
         return getProduct(productDto.getProductSeq());
     }
