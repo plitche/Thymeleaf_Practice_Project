@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,8 +17,10 @@ public class MainController {
     final ProductService productService;
 
     @RequestMapping("/")
-    public String getMain(Model model) throws Exception {
+    public String getMain(@RequestParam(required = false) Boolean result,
+                          Model model) throws Exception {
         model.addAttribute("productList", productService.getProductList());
+        model.addAttribute("result", result);
         return "main";
     }
 
@@ -28,7 +31,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
-    public String addProduct(ProductDto productDto, Model model) throws Exception {
+    public String addProduct(ProductDto productDto, RedirectAttributes re) throws Exception {
         // Parameter productDto를 받을때 @RequestParam annotation을 사용하면 에러 발생
         // @ModelAttribute를 사용해야 한다.
 
@@ -37,7 +40,14 @@ public class MainController {
         String desc = productDto.getDescription();
 
         ProductDto addProduct = productService.addProduct(name, price, desc);
-        model.addAttribute("addProduct", addProduct);
+
+        // 아래 코드는 URL에 노출이 됨 GET 방식
+        // re.addAttribute("addProduct", addProduct);
+         re.addAttribute("result", true);
+
+        // addFlashAttribute는 POST 방식이어야 함.
+        // re.addFlashAttribute("addProduct", addProduct);
+        // re.addFlashAttribute("result", true);
         return "redirect:/";
     }
 
