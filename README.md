@@ -107,6 +107,15 @@ public String writeBbs(Model model, ProductDto productDto){
     }
 ```
 
-
-
+- Controller Model 값 jsp에서 사용
+  > script: <script th:inline="javascript" >,
+  > tag: <body th:inline="text">
   
+```js
+  <script th:inline="javascript">
+    let result = [[${result}]]
+  </script>
+```
+  
+ 
+
