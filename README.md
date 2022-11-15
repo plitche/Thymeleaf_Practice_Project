@@ -92,6 +92,20 @@ public String writeBbs(Model model, ProductDto productDto){
 </form>
 ```
 
+```html
+    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    public String addProduct(@ModelAttribute ProductDto productDto, Model model) throws Exception {
+        // @ModelAttribute를 사용 혹은 생략 가능
+
+        String name = productDto.getProductName();
+        int price = productDto.getProductPrice();
+        String desc = productDto.getDescription();
+
+        ProductDto addProduct = productService.addProduct(name, price, desc);
+        model.addAttribute("addProduct", addProduct);
+        return "redirect:/";
+    }
+```
 
 
 
