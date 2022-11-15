@@ -21,17 +21,6 @@ public class MainController {
         return "main";
     }
 
-    @RequestMapping("/product/detail/{productSeq}")
-    @ResponseBody
-    public ProductDto getProductDetail(@PathVariable int productSeq) throws Exception {
-        return productService.getProduct(productSeq);
-    }
-
-    @RequestMapping("/product")
-    public String test(Model model, ProductDto productDto) {
-        return "test";
-    }
-
     @RequestMapping("/product/add/page")
     public String addProductPage(Model model, ProductDto productDto) {
         model.addAttribute("productDto", productDto);
@@ -39,8 +28,10 @@ public class MainController {
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
-    public String addProduct(@RequestParam ProductDto productDto,
-                             Model model) throws Exception {
+    public String addProduct(ProductDto productDto, Model model) throws Exception {
+        // Parameter productDto를 받을때 @RequestParam annotation을 사용하면 에러 발생
+        // @ModelAttribute를 사용해야 한다.
+
         String name = productDto.getProductName();
         int price = productDto.getProductPrice();
         String desc = productDto.getDescription();
@@ -50,5 +41,10 @@ public class MainController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/product/detail/{seq}")
+    public String productDetail(@PathVariable int seq) {
+        System.out.println("seq = " + seq);
+        return null;
+    }
 
 }

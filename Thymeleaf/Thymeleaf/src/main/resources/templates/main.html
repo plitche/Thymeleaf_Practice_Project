@@ -44,7 +44,7 @@
                         <span style="cursor: pointer; text-underline: red"
                               th:id="${product.productSeq}"
                               th:text="${product.productName}"
-                              th:onclick="getProductDetail(this.getAttribute('id'))"></span>
+                              th:onclick="|location.href='@{/product/detail/{seq}(seq = ${product.productSeq})}'|"></span>
                     </td>
                     <td th:text="${product.productPrice}"></td>
                 </tr>

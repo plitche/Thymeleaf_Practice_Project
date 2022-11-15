@@ -24,15 +24,21 @@ public class ProductService {
     }
 
     public ProductDto getProduct(int seq) throws Exception {
+//        for (ProductDto productDto : this.productDtoList) {
+//            System.out.println("productDto = " + productDto.getProductSeq());
+//        }
+
         return this.productDtoList.stream()
-                .findFirst().filter(productDto -> productDto.getProductSeq() == seq)
+                .filter(productDto -> productDto.getProductSeq() == seq)
+                .findFirst()
                 .orElseThrow(() -> new Exception("bad product seq parameter ERROR"));
     }
 
     public ProductDto addProduct(String productName, int price, String desc) throws Exception {
-        ProductDto productDto = new ProductDto(++seq, productName, price, desc);
+        int seq = this.seq + 1;
+        ProductDto productDto = new ProductDto(seq, productName, price, desc);
         this.productDtoList.add(productDto);
-        return getProduct(productDto.getProductSeq());
+        return getProduct(seq);
     }
 
 }
