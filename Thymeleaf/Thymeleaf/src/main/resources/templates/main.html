@@ -6,6 +6,7 @@
 </head>
 <style>
     body {position: absolute}
+    .topWrap {}
     .outerWrap {position: relative; top: 200px; left: 50%;}
     #productTable td, #productTable th {border: 1px solid black; padding: 18px;}
     #productTable thead th {text-align: left}
@@ -13,11 +14,17 @@
     button {border: 2px solid red; border-radius: 20%; margin-right: 10px; background: red; padding: 5px; font-weight: bold; font-size: large; color: white;}
 </style>
 <script th:inline="javascript">
-    let a = [[${result}]];
-    console.log([[${result}]])
+    let result = [[${result}]];
+    if (result != null) {
+        if (result) alert('상품 등록에 성공하셨습니다.')
+        else alert('상품 등록에 실패하셨습니다.')
+    }
 </script>
 <body>
-
+    <div class="topWrap">
+        <button id="login" th:onclick="|location.href='@{/product/add/page}'|">로그인</button>
+        <button id="logout" th:onclick="|location.href='@{/product/add/page}'|">로그아웃</button>
+    </div>
     <div class="outerWrap">
         <table id="productTable">
             <colgroup>

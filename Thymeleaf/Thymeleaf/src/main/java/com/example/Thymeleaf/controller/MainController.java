@@ -33,7 +33,7 @@ public class MainController {
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
     public String addProduct(ProductDto productDto, RedirectAttributes re) throws Exception {
         // Parameter productDto를 받을때 @RequestParam annotation을 사용하면 에러 발생
-        // @ModelAttribute를 사용해야 한다.
+        // @ModelAttribute를 사용해야 한다. // 생략 가능
 
         String name = productDto.getProductName();
         int price = productDto.getProductPrice();
@@ -52,9 +52,10 @@ public class MainController {
     }
 
     @RequestMapping(value = "/product/detail/{seq}")
-    public String productDetail(@PathVariable int seq) {
-        System.out.println("seq = " + seq);
-        return null;
+    public String productDetail(@PathVariable int seq, Model model) throws Exception {
+        ProductDto product = productService.getProduct(seq);
+        model.addAttribute("product", product);
+        return "/product/productDetail";
     }
 
 }
