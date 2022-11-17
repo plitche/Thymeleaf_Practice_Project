@@ -16,7 +16,7 @@
   <input type="text" th:value="${message}" value="기본값">
 ```   
 
-#### Model로 넘어온 값을 th:each를 사용
+#### 2.Model로 넘어온 값을 th:each를 사용
 - th:each의 두 번째 파라미터로 stat을 설정해서 반복의 상태를 확인. 두 번째 파라미터를 생략하는 경우 앞의 변수명 + Stat이 Default 값
     - index : 0부터 시작하는 값
     - count : 1부터 시작하는 값
@@ -34,19 +34,19 @@
   </tr>
 ```  
 
-#### th:fragment
+#### 3.th:fragment
   - <head>태그에 해당 속성을 사용해서 fragment의 이름을 지정.  
   - fragment는 다른 HTML에서 include 또는 replace 속성을 사용해서 적용
   
-#### th:block
+#### 4.th:block
   - layoutL:fragment 속성에 이름을 지정해서 실제 Content 페이지의 내용을 채우는 기능
   - 해당 기능은 동적(Dynamic)인 처리가 필요할 때 사용
   
-#### th:replace
+#### 5.th:replace
   - JSP의 <include> 태그와 유사한 속성
   - th:fragment을 통해 설정한 이름을 찾아 해당 코드로 치환
 
-#### a태그를 작성할 때는 th:href="@{}" 을 이용하여 작성
+#### 6.a태그를 작성할 때는 th:href="@{}" 을 이용하여 작성
 ```html
   <!-- 특정 url로 이동 -->
   <a th:href="@{https://plitche.tistory.com}">블로그 이동</a>
@@ -60,14 +60,14 @@
   <a th:href="@{/product/detail/{productSeq}(id = ${product.seq})}">상품 상세 페이지</a>
 ```
 
-#### th:onclick (location.href)  
+#### 7.th:onclick (location.href)  
   > location.href 앞 뒤로 | 를 작성. |를 앞 뒤로 써주면 +연산자를 사용하지 않아도, 사용한 것과 같은 효과
 ```html
 <button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>
 <button th:onclick="|location.href='@{/product/add}'|">등록</button>
 ```  
 
-#### form
+#### 8.form
   - th:action
     > form data를 보낼 url를 설정
   - th:object
@@ -119,7 +119,7 @@ public String writeBbs(Model model, ProductDto productDto){
     }
 ```
 
-#### Controller Model 값 jsp에서 사용
+#### 9.Controller Model 값 jsp에서 사용
   > script: <script th:inline="javascript" >,
   > tag: <body th:inline="text">
   
