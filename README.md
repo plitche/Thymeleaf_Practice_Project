@@ -129,5 +129,28 @@ public String writeBbs(Model model, ProductDto productDto){
   </script>
 ```
   
- 
+#### 10. th:value
+  - 엘리먼트들의 value값을 지정  
+  
+```html
+  <button th:value=”${hello}”/>  
+```
 
+#### 11. th:with
+  - 변수 값을 지정해서 사용
+  
+```html
+  <div th:with=”temp=${hello}” th:text=”${temp}”>
+```
+  
+#### 12. th:switch
+  - th:case에서 case문을 다루고 *로 case문에서 다루지 않은 모든 경우가 처리
+  > java switch문의 default역할
+    
+```html
+  <div th:switch="${hello}">
+    <p th:case="'admin'">User is an administrator
+    <p th:case="#{roles.manager}">User is a manager
+    <p th:case="*">User is a manager
+  </div>
+```
