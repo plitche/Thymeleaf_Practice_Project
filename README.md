@@ -5,6 +5,23 @@
 
 
 ### 문법 정리
+#### 기본 문법
+```text
+  변수 : ${...} - ${student.id}
+  선택자 : *{...} - *{id}
+  메시지 : #{...} - #{id}
+  링크URL : @{...} - @{https://www.naver.com}
+  부분적 표현 : ~{...} -
+  조건 연산자 : and, or, not, !
+  ${student.age} > 20 and ${student.age} < 10 처럼 각각 분리하여서 사용하거나
+  ${student.age > 20 or student.age < 10} 처럼 한 번에 묶어서 사용하는 것도 가능
+  텍스트 결합 : ${student.id}+${student.name}
+  문장 결합 : |학생 아이디 : ${student.id}, 학생 이름 : ${student.name} | - | 로 전체 문장을 묶어줌
+  if-then : if ? then - ${student.age < 20} ? '청소년'
+  if-then-else : if ? then : else - ${student.age < 20} ? '청소년' : '성인'
+  default : value ?: defaultValue
+```
+
 #### 1.Model에 담겨있는 값을 꺼내는 방법
 
 - div나 h1, span등의 내용으로 출력하는 경우 th:text를 사용  
