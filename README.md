@@ -171,3 +171,16 @@ public String writeBbs(Model model, ProductDto productDto){
     <p th:case="*">User is a manager
   </div>
 ```
+
+#### 13. th:if
+    - 조건문을 사용할 때 else 대신 unless를 사용
+    - if문의 조건식과 unless의 조건식을 동일하게 해야 함
+    
+```html
+  <span th:if="${member.age >= 20}">
+    성인입니다.
+  </span>
+  <span th:unless="${student.age >= 20}">
+    청소년입니다.
+  </span> 
+```
