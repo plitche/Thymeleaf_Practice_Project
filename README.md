@@ -35,13 +35,14 @@
 
 #### 2.Model로 넘어온 값을 th:each를 사용
 - th:each의 두 번째 파라미터로 stat을 설정해서 반복의 상태를 확인. 두 번째 파라미터를 생략하는 경우 앞의 변수명 + Stat이 Default 값
-    - index : 0부터 시작하는 값
-    - count : 1부터 시작하는 값
-    - current : 현재 객체 정보
-    - even : 짝수 번째 데이터 여부
-    - odd : 홀수 번째 데이터 여부
-    - first : 첫 번째 데이터 여부
-    - last : 마지막 데이터 여부
+    - index : 현재 인덱스(0부터 시작)
+    - count : 현재 인덱스(1부터 시작)
+    - size : 전체 개수
+    - current : 현재 요소
+    - even : 현재 반복이 짝수인지(boolean)
+    - odd : 현재 반복이 홀수인지(boolean)
+    - first : 현재 반복이 첫번째인지(boolean)
+    - last : 현재 반복이 마지막인지(boolean)
 
 ```html
   <tr th:each="product, stat : ${productList}">
