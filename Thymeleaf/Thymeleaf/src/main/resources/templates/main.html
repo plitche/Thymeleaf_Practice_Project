@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>product List</title>
-</head>
 <style>
     body {position: absolute}
     .topWrap {}
@@ -21,6 +17,8 @@
     }
 </script>
 <body>
+    <header th:replace="/header :: commonHeader"></header>
+
     <div class="topWrap">
         <button id="login" th:onclick="|location.href='@{/product/add/page}'|">로그인</button>
         <button id="logout" th:onclick="|location.href='@{/product/add/page}'|">로그아웃</button>

@@ -1,5 +1,6 @@
 package com.example.Thymeleaf.controller;
 
+import com.example.Thymeleaf.dto.MemberDto;
 import com.example.Thymeleaf.dto.ProductDto;
 import com.example.Thymeleaf.service.MemberService;
 import com.example.Thymeleaf.service.ProductService;
@@ -18,9 +19,11 @@ public class MainController {
 
     @RequestMapping("/")
     public String getMain(@RequestParam(required = false) Boolean result,
+//                          MemberDto memberDto,
                           Model model) throws Exception {
         model.addAttribute("productList", productService.getProductList());
         model.addAttribute("result", result);
+//        model.addAttribute("memberDto", memberDto);
         return "main";
     }
 
