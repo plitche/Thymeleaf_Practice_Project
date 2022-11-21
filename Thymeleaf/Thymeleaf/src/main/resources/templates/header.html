@@ -2,19 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="commonHeader">
     <style>
-        body {position: absolute}
-        .headerWrap {position: relative; top: 150px; right: 20%;}
-        button {border: 2px solid red; border-radius: 20%; margin-right: 10px; background: red; padding: 5px; font-weight: bold; font-size: large; color: white; position: relative; top: 300px; left:60%;}
+        .headerWrap {margin-top: 50px; margin-right: 20%; text-align: right; width: 150%}
+        .headerWrap button {border: none; border-radius: 10%; margin-right: 10px; padding: 3px; font-weight: normal; font-size: small; color: white;}
+        .loged {display: none}
     </style>
+    <script>
+        $(document).ready(function() {
+            $('#loginBtn').on('click', function() {
+                let id = $(this > '#formData1').val();
+                let pw = $(this > '#formData2').val();
+
+                if(id == '' || id == undefined || id == null)
+                    alert('아이디를 입력해 주세요.'); return;
+
+                if(pw == '' || pw == undefined || pw == null)
+                    alert('비밀번호를 입력해 주세요.'); return;
+
+                $('#loginForm').submit();
+            })
+        })
+
+    </script>
     <body>
         <div class="headerWrap">
-            <div th:object="${memberDto}">
-                <input type="text" th:filed="*{memberId}" th:placeholder="id"/>
-                <input type="text" th:filed="*{password}" th:placeholder="password"/>
-                <button type="button">로그인</button>
+            <div class="unLoged">
+                <form id="loginForm" th:action="/member/login" th:object="${memberDto}" method="post">
+                    <input id="formData1" type="text" th:field="id" th:placeholder="id"/>
+                    <input id="formData2" type="text" th:field="password" th:placeholder="password"/>
+                    <button id="loginBtn" style="background: cadetblue" type="button">로그인</button>
+                </form>
             </div>
-            <div>
-                <button type="button">로그아웃</button>
+            <div class="loged">
+                <span>~~님 안녕하세요.</span>
+                <button style="background: indianred" type="button">로그아웃</button>
             <div>
         </div>
     </body>
