@@ -19,11 +19,9 @@ public class MainController {
 
     @RequestMapping("/")
     public String getMain(@RequestParam(required = false) Boolean result,
-                          MemberDto memberDto,
                           Model model) throws Exception {
         model.addAttribute("productList", productService.getProductList());
         model.addAttribute("result", result);
-        model.addAttribute("memberDto", memberDto);
         return "main";
     }
 

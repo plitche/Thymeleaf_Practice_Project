@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="commonHeader">
+    <header>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </header>
     <style>
         .headerWrap {margin-top: 50px; margin-right: 20%; text-align: right; width: 150%}
         .headerWrap button {border: none; border-radius: 10%; margin-right: 10px; padding: 3px; font-weight: normal; font-size: small; color: white;}
@@ -9,16 +12,28 @@
     <script>
         $(document).ready(function() {
             $('#loginBtn').on('click', function() {
-                let id = $(this > '#formData1').val();
-                let pw = $(this > '#formData2').val();
+                let id = $('#formData1').val();
+                let pw = $('#formData2').val();
 
-                if(id == '' || id == undefined || id == null)
+                if(id == '' || id == undefined || id == null) {
                     alert('아이디를 입력해 주세요.'); return;
+                }
 
-                if(pw == '' || pw == undefined || pw == null)
+                if(pw == '' || pw == undefined || pw == null) {
                     alert('비밀번호를 입력해 주세요.'); return;
+                }
 
-                $('#loginForm').submit();
+                $.ajax({
+                    url: '/member/login',
+                    type: "POST",
+                    data: {"id": id, "password": pw},
+                    success: function(data) {
+                        console.log(data)
+                    },
+                    error:function(request,status,error){
+                        // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                })
             })
         })
 
@@ -26,11 +41,9 @@
     <body>
         <div class="headerWrap">
             <div class="unLoged">
-                <form id="loginForm" th:action="/member/login" th:object="${memberDto}" method="post">
-                    <input id="formData1" type="text" th:field="id" th:placeholder="id"/>
-                    <input id="formData2" type="text" th:field="password" th:placeholder="password"/>
-                    <button id="loginBtn" style="background: cadetblue" type="button">로그인</button>
-                </form>
+                <input id="formData1" type="text" th:placeholder="id"/>
+                <input id="formData2" type="text" th:placeholder="password"/>
+                <button id="loginBtn" style="background: cadetblue" type="button">로그인</button>
             </div>
             <div class="loged">
                 <span>~~님 안녕하세요.</span>
