@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
 
     final MemberService memberService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public MemberDto login(@RequestParam String memberId,
+    public MemberDto login(@RequestParam String id,
                       @RequestParam String password,
                       Model model) throws Exception {
-        MemberDto memberDto = memberService.login(memberId, password);
+        System.out.println("id = " + id);
+        System.out.println("password = " + password);
+        MemberDto memberDto = memberService.login(id, password);
         return memberDto;
     }
 }

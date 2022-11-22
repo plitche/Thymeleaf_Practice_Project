@@ -18,11 +18,6 @@
 </script>
 <body>
     <header th:replace="/header :: commonHeader"></header>
-
-    <div class="topWrap">
-        <button id="login" th:onclick="|location.href='@{/product/add/page}'|">로그인</button>
-        <button id="logout" th:onclick="|location.href='@{/product/add/page}'|">로그아웃</button>
-    </div>
     <div class="outerWrap">
         <table id="productTable">
             <colgroup>
