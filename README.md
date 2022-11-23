@@ -1,5 +1,14 @@
 # Thymeleaf_Practice_Project
 
+### Indroduction
+java 라이브러리로 웹 및 독립된 환경 모두를 위한 템플릿 엔진으로써,  
+확장성이 매우 높고 Spring Framework 용 모듈 및 플러그인 할 수 있는 기능을 제공하므로 최신 HTML5 JVM 웹 개발에 이상적.  
+  
+HTML에 데이터를 맵핑하여 하나의 View를 Generate한다는 개념과 HTML 친화적인 문법을 사용하기 때문에  
+Front-End 개발자와 Back-End 개발자 간의 업무 효율성이 높아져 협업이 쉽게 이루어질 수 있습니다.  
+  
+기본적으로 Thymeleaf는 HTML, XML, TEXT, JAVASCRIPT, CSS, RAW 6가지 템플릿을 처리할 수 있으며, 각 템플릿을 템플릿 모드라고 함  
+
 ### Reference or URL
 - https://www.thymeleaf.org/doc/articles/thymeleaf3migration.html
 
