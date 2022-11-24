@@ -7,7 +7,8 @@
     <style>
         .headerWrap {margin-top: 50px; margin-right: 20%; text-align: right; width: 150%}
         .headerWrap button {border: none; border-radius: 10%; margin-right: 10px; padding: 3px; font-weight: normal; font-size: small; color: white;}
-        .loged {display: none}
+        /*.loged {display: none}*/
+        .loged button {margin-left: 5px;}
     </style>
     <script>
         $(document).ready(function() {
@@ -28,7 +29,8 @@
                     type: "POST",
                     data: {"id": id, "password": pw},
                     success: function(data) {
-                        console.log(data)
+                        alert(data.message);
+                        location.reload();
                     },
                     error:function(request,status,error){
                         // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -40,13 +42,13 @@
     </script>
     <body>
         <div class="headerWrap">
-            <div class="unLoged">
+            <div class="unLoged" th:if="${session.memberId == null}">
                 <input id="formData1" type="text" th:placeholder="id"/>
                 <input id="formData2" type="text" th:placeholder="password"/>
                 <button id="loginBtn" style="background: cadetblue" type="button">로그인</button>
             </div>
-            <div class="loged">
-                <span>~~님 안녕하세요.</span>
+            <div class="loged" th:unless="${session.memberId == null}">
+                <span><strong th:text="${session.memberId}"></strong>님 안녕하세요.</span>
                 <button style="background: indianred" type="button">로그아웃</button>
             <div>
         </div>
