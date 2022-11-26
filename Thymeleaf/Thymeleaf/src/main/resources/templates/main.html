@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
 <style>
     body {position: absolute}
     .topWrap {}
@@ -15,6 +18,20 @@
         if (result) alert('상품 등록에 성공하셨습니다.')
         else alert('상품 등록에 실패하셨습니다.')
     }
+
+    $(document).ready(function() {
+
+    })
+
+    function deleteItem() {
+        alert('111')
+    }
+
+    function test() {
+        alert('222')
+    }
+
+
 </script>
 <body>
     <header th:replace="/header :: commonHeader"></header>
@@ -54,8 +71,15 @@
                 <tr>
                     <td colspan="4" style="text-align: right">
                         <!--<button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>-->
-                        <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>
-                        <button>삭제</button>
+                        <div th:if="${session.memberId == null}">
+                            <button th:onclick="test()">등록</button>
+                            <button th:onclick="test()">삭제</button>
+                        </div>
+                        <div th:unless="${session.memberId == null}">
+                            <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>
+                            <button th:onclick="deleteItem()">삭제</button>
+                        </div>
+
                     </td>
                 </tr>
             </tfoot>
