@@ -37,6 +37,19 @@
                     }
                 })
             })
+
+            $('#logoutBtn').on('click', function() {
+                $.ajax({
+                    url: '/member/logout',
+                    type: "POST",
+                    success: function() {
+                        location.reload();
+                    },
+                    error:function(request,status,error){
+                        // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                })
+            })
         })
 
     </script>
@@ -49,7 +62,7 @@
             </div>
             <div class="loged" th:unless="${session.memberId == null}">
                 <span><strong th:text="${session.memberId}"></strong>님 안녕하세요.</span>
-                <button style="background: indianred" type="button">로그아웃</button>
+                <button id="logoutBtn" style="background: indianred" type="button">로그아웃</button>
             <div>
         </div>
     </body>

@@ -48,4 +48,15 @@ public class MemberController {
 
         return returnMap;
     }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @ResponseBody
+    public void logout(HttpServletRequest request) throws Exception {
+        try {
+            HttpSession httpSession = request.getSession();
+            httpSession.removeAttribute("memberId");
+
+        } catch (Exception e) {
+        }
+    }
 }
