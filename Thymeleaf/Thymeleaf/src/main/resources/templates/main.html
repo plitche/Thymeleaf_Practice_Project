@@ -33,14 +33,29 @@
         //     }
         // })
 
-        let selectedItems = $('input:checkbox').filter((item) => $(item).prop('checked') == true)
+        let selectedItems = $('input:checkbox').filter(":checked")
         let itemSeqDatas = []
 
         $.each(selectedItems, function(index, item) {
             itemSeqDatas.push($(item).attr('name'))
         })
 
-        console.log(itemSeqDatas)
+        if (itemSeqDatas.length < 1) {
+            alert('삭제할 물품을 선택해 주세요.')
+            return
+        }
+
+        $.ajax({
+            url: '/product/delete',
+            type: "POST",
+            data: {"itemSeqDatas": itemSeqDatas.join(',')},
+            success: function(data) {
+                alert(data);
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        })
     }
 
 </script>

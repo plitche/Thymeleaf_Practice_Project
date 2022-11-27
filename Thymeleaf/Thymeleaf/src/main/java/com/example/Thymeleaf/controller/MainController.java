@@ -59,4 +59,12 @@ public class MainController {
         return "/product/productDetail";
     }
 
+    @RequestMapping(value = "/product/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteProduct(@RequestParam String itemSeqDatas, Model model) throws Exception {
+        System.out.println(itemSeqDatas);
+
+        return "test";
+    }
+
 }
