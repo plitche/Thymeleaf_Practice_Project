@@ -27,8 +27,8 @@
         alert('111')
     }
 
-    function test() {
-        alert('222')
+    function test(id) {
+        alert(id)
     }
 
 
@@ -71,14 +71,17 @@
                 <tr>
                     <td colspan="4" style="text-align: right">
                         <!--<button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>-->
-                        <div th:if="${session.memberId == null}">
-                            <button th:onclick="test()">등록</button>
-                            <button th:onclick="test()">삭제</button>
+                        <div>
+                            <!--<button th:onclick="'javascript:test('+ ${session.memberId} + ');'">등록</button>
+                            <button th:onclick="'javascript:test('+ ${session.memberId} + ');'">삭제</button>-->
+
+                            <a th:onclick="|javascript:test('${session.memberId}')|">등록</a>
+                            <a th:onclick="|javascript:test('${session.memberId}')|">삭제</a>
                         </div>
-                        <div th:unless="${session.memberId == null}">
-                            <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>
-                            <button th:onclick="deleteItem()">삭제</button>
-                        </div>
+<!--                        <div th:unless="${session.memberId == null}">-->
+<!--                            <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>-->
+<!--                            <button th:onclick="deleteItem()">삭제</button>-->
+<!--                        </div>-->
 
                     </td>
                 </tr>
