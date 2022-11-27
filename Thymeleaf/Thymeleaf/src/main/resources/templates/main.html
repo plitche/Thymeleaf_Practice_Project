@@ -24,14 +24,23 @@
     })
 
     function deleteItem() {
-        let selectedItems = $('input:checkbox')
+        // let selectedItems = $('input:checkbox')
+        // let itemSeqDatas = []
+        //
+        // $.each(selectedItems, function(index, item) {
+        //     if (item.checked){
+        //         itemSeqDatas.push($(item).attr('name'))
+        //     }
+        // })
+
+        let selectedItems = $('input:checkbox').filter((item) => $(item).prop('checked') == true)
         let itemSeqDatas = []
 
         $.each(selectedItems, function(index, item) {
-            if (item.checked){
-                itemSeqDatas.push($(item).attr('name'))
-            }
+            itemSeqDatas.push($(item).attr('name'))
         })
+
+        console.log(itemSeqDatas)
     }
 
 </script>
