@@ -24,13 +24,15 @@
     })
 
     function deleteItem() {
-        alert('111')
-    }
+        let selectedItems = $('input:checkbox')
+        let itemSeqDatas = []
 
-    function test(id) {
-        alert(id)
+        $.each(selectedItems, function(index, item) {
+            if (item.checked){
+                itemSeqDatas.push($(item).attr('name'))
+            }
+        })
     }
-
 
 </script>
 <body>
@@ -54,7 +56,7 @@
             <tbody>
                 <tr th:each="product, stat : ${productList}">
                     <td style="text-align: center">
-                        <input type="checkbox" />
+                        <input type="checkbox" th:name="${product.productSeq}"/>
                     </td>
                     <td th:text="${stat.index+1}"></td>
                     <td>
@@ -71,18 +73,14 @@
                 <tr>
                     <td colspan="4" style="text-align: right">
                         <!--<button th:onclick="'location.href=\'' + @{/product/add} + '\''">등록</button>-->
-                        <div>
-                            <!--<button th:onclick="'javascript:test('+ ${session.memberId} + ');'">등록</button>
-                            <button th:onclick="'javascript:test('+ ${session.memberId} + ');'">삭제</button>-->
-
-                            <a th:onclick="|javascript:test('${session.memberId}')|">등록</a>
-                            <a th:onclick="|javascript:test('${session.memberId}')|">삭제</a>
+                        <div th:if="${session.memberId == null}">
+                            <button th:onclick="javascript:alert('로그인 후 이용해 주세요.')">등록</button>
+                            <button th:onclick="javascript:alert('로그인 후 이용해 주세요.')">삭제</button>
                         </div>
-<!--                        <div th:unless="${session.memberId == null}">-->
-<!--                            <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>-->
-<!--                            <button th:onclick="deleteItem()">삭제</button>-->
-<!--                        </div>-->
-
+                        <div th:unless="${session.memberId == null}">
+                            <button th:onclick="|location.href='@{/product/add/page}'|">등록</button>
+                            <button th:onclick="javascript:deleteItem()">삭제</button>
+                        </div>
                     </td>
                 </tr>
             </tfoot>
