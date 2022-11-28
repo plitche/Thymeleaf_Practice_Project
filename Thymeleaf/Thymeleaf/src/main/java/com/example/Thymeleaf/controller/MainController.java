@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequiredArgsConstructor
 public class MainController {
@@ -61,10 +64,13 @@ public class MainController {
 
     @RequestMapping(value = "/product/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteProduct(@RequestParam String itemSeqDatas, Model model) throws Exception {
-        System.out.println(itemSeqDatas);
+    public Map<String, Object> deleteProduct(@RequestParam String itemSeqDatas) throws Exception {
+        String[] arrItemSeq = itemSeqDatas.split(",");
+        int deletedSize = productService.deleteProduct(arrItemSeq);
 
-        return "test";
+        Map<String, Object> returnMap = new HashMap<>();
+        returnMap.put("deletedSize", deletedSize);
+        return returnMap;
     }
 
 }

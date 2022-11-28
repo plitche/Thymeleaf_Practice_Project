@@ -50,7 +50,8 @@
             type: "POST",
             data: {"itemSeqDatas": itemSeqDatas.join(',')},
             success: function(data) {
-                alert(data);
+                alert(data.deletedSize + "개 물품이 삭제되었습니다.");
+                location.reload();
             },
             error:function(request,status,error){
                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
